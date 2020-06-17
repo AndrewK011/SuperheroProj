@@ -74,7 +74,7 @@ namespace SuperheroProject.Controllers
                 oldSuperhero.SecondaryAbility = superhero.SecondaryAbility;
                 oldSuperhero.Catchphrase = superhero.Catchphrase;
 
-                //_context.Update(oldSuperhero);
+                _context.Update(oldSuperhero);
                 _context.SaveChanges();
 
 
@@ -100,7 +100,7 @@ namespace SuperheroProject.Controllers
         {
             try
             {
-                _context.Superheroes.Remove(_context.Superheroes.Where(s => s.Id == id).SingleOrDefault());
+                _context.Superheroes.Remove(superhero);
                 _context.SaveChanges();
 
                 return RedirectToAction("Index");
