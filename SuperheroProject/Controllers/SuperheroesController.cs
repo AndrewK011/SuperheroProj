@@ -68,8 +68,13 @@ namespace SuperheroProject.Controllers
             try
             {
                 var oldSuperhero = _context.Superheroes.Where(s => s.Id == id).SingleOrDefault();
-                _context.Update(oldSuperhero);
-                oldSuperhero = superhero;
+                oldSuperhero.Name = superhero.Name;
+                oldSuperhero.AlterEgo = superhero.AlterEgo;
+                oldSuperhero.PrimaryAbility = superhero.PrimaryAbility;
+                oldSuperhero.SecondaryAbility = superhero.SecondaryAbility;
+                oldSuperhero.Catchphrase = superhero.Catchphrase;
+
+                //_context.Update(oldSuperhero);
                 _context.SaveChanges();
 
 
