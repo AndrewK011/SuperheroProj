@@ -89,7 +89,8 @@ namespace SuperheroProject.Controllers
         // GET: Superheroes/Delete/5
         public IActionResult Delete(int id)
         {
-            return View();
+
+            return View(_context.Superheroes.Where(s => s.Id == id).SingleOrDefault());
         }
 
         // POST: Superheroes/Delete/5
@@ -99,7 +100,8 @@ namespace SuperheroProject.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
+                _context.Superheroes.Remove(_context.Superheroes.Where(s => s.Id == id).SingleOrDefault());
+                _context.SaveChanges();
 
                 return RedirectToAction("Index");
             }
